@@ -11,7 +11,7 @@ function login(){
 				location.href = "/login.do";
 			}else {
 				alert("환영합니다 회원님");
-				location.href = "/join.do";
+				location.href = "/home.do";
 			}
 			
 		}

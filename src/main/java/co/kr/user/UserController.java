@@ -19,7 +19,7 @@ public class UserController {
 
 	@Autowired
 	public UserService userService;
-
+	//qwe
 	//------------------------------------로그인---------------------------------------
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
