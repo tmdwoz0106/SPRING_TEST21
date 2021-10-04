@@ -9,6 +9,23 @@
 <script type="text/javascript" src="/resources/js/board/list.js"></script>
 </head>
 <body>
+<h1>게시판 페이지</h1>
+<label>검색</label>
+	<select>
+		<option value="board_title">제목</option>
+		<option value="">작성자</option>
+		<option value="board_day">날짜</option>
+	</select>
 
+<table>
+	<tr>
+		<td>제목</td>
+		<td>날짜</td>
+		<td>작성자</td>
+		<td>조회수</td>
+	</tr>
+	<tbody id="tbody"></tbody>
+</table>
+<div id="paging"></div>
 </body>
 </html>

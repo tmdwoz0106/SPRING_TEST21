@@ -3,7 +3,11 @@
 <mapper namespace="co.kr.board.service.mapper.BoardMapper">
 
 	<select id="list" resultType="HashMap">
-	SELECT 	board_no,
+	<![CDATA[
+	SELECT * FROM
+	(
+	SELECT 	row_number() over(order by board_num desc) rn,
+			board_no,
 			board_title,
 			board_content,
 			board_day,
@@ -11,5 +15,15 @@
 			user_kinck
 	FROM 	board21,user21
 	WHERE 	board21.user_no = user21.user_no
+	]]>
+		<if test="keyword != null and keyword !=''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
+		order by board_num desc
+	<![CDATA[
+	)a
+	where a.rn >= #{startRn}
+	and   a.rn < #{endRn}
+	]]>
 	</select>
 </mapper>

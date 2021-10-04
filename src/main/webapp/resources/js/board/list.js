@@ -9,6 +9,7 @@ function list(){
 		dataType:"JSON",
 		success : function(result){
 			console.log(result.list);
+			
 		}
 	})
 }

@@ -24,9 +24,9 @@ public class BoardController {
 		return "board/list";
 	}
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public ModelAndView home_ajax() {
+	public ModelAndView home_ajax(int page, String keyword, String type) {
 		ModelAndView json = new ModelAndView("jsonView");
-		List<HashMap<String, Object>> list = boardService.list();
+		List<HashMap<String, Object>> list = boardService.list(page,keyword,type);
 		json.addObject("list", list);
 		return json;
 	}

@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface BoardService {
 
-	public List<HashMap<String, Object>> list();
+	public List<HashMap<String, Object>> list(int page, String keyword, String type);
 
 }

@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BoardMapper {
 
-	public List<HashMap<String, Object>> list();
+//	public List<HashMap<String, Object>> list();
+
+	public List<HashMap<String, Object>> list(HashMap<String, Object> param);
 
 }
