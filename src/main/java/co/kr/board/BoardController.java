@@ -8,6 +8,7 @@ import co.kr.board.service.BoardService;
 @Controller
 public class BoardController {
 	//test -seo
+	//asdfasdfhjjhhjhj
 	@Autowired
 	public BoardService boardService;
 }
