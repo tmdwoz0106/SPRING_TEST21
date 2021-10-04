@@ -12,4 +12,6 @@ public interface BoardMapper {
 
 	public List<HashMap<String, Object>> list(HashMap<String, Object> param);
 
+	public int total(HashMap<String, Object> param);
+
 }

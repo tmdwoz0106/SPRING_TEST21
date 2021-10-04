@@ -24,10 +24,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<HashMap<String, Object>> list(int page, String keyword, String type) {
 		int amount = 10;
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("StartRn", (page-1)*amount);
+		param.put("startRn", (page-1)*amount);
 		param.put("endRn", page*amount);
 		param.put("type", type);
 		param.put("keyword", keyword);
 		return boardMapper.list(param);
+	}
+
+	@Override
+	public int total(String type, String keyword) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		return boardMapper.total(param);
 	}
 }

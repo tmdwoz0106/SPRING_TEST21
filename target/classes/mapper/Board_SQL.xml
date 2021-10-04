@@ -6,7 +6,7 @@
 	<![CDATA[
 	SELECT * FROM
 	(
-	SELECT 	row_number() over(order by board_num desc) rn,
+	SELECT 	row_number() over(order by board_no desc) rn,
 			board_no,
 			board_title,
 			board_content,
@@ -19,11 +19,19 @@
 		<if test="keyword != null and keyword !=''">
 			where ${type} like '%'||#{keyword}||'%'
 		</if>
-		order by board_num desc
+		order by board_no desc
 	<![CDATA[
 	)a
-	where a.rn >= #{startRn}
-	and   a.rn < #{endRn}
+	where a.rn > #{startRn}
+	and   a.rn <= #{endRn}
 	]]>
+	</select>
+	
+	<select id="total" resultType="int">
+		SELECT COUNT(*)
+		FROM   board21
+		<if test="keyword != null and keyword !=''">
+			where ${type} like '%'||#{keyword}||'%'
+		</if>
 	</select>
 </mapper>

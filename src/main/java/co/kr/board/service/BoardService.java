@@ -7,4 +7,6 @@ public interface BoardService {
 
 	public List<HashMap<String, Object>> list(int page, String keyword, String type);
 
+	public int total(String type,String keyword);
+
 }
