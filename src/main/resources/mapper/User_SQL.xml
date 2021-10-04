@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.user.service.mapper.UserMapper">
+
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(user_id)
+		FROM   user21
+	</select>
+	
+	<select id="login" resultType="HashMap">
+		SELECT *
+		FROM   user21
+		WHERE  user_id = #{user_id}
+		AND    user_pw = #{user_pw}
+	</select>
+	
+	<select id="cntMax" resultType="int">
+		SELECT COUNT(*)
+		FROM   user21
+	</select>
+	
+	<select id="userCheck" resultType="HashMap">
+		SELECT user_id
+		FROM   user21
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO
+		USER21 (user_no,
+				user_id,
+				user_pw,
+				user_email,
+				user_name,
+				user_kinck)
+		VALUES (#{user_no},
+				#{user_id},
+				#{user_pw},
+				#{user_email},
+				#{user_name},
+				#{user_kinck})
+	</insert>
+</mapper>
