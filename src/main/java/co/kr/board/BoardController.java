@@ -23,16 +23,12 @@ public class BoardController {
 	public BoardService boardService;
 	
 	//----------------------------리스트 페이지--------------------------
-	//할만하노 ㅋ
+
 	//2021-10-04 - 11시 41분 최승재 커밋 
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-	public String home(HttpSession session) {
+	public String home(HttpSession session,Model model) {
 		int i = Integer.parseInt(session.getAttribute("param").toString());
-//		System.out.println(session.getAttribute("param"));
-		System.out.println(i);
-		
-		String user = (String)session.getAttribute("kinck").toString();
-		System.out.println(user);
+		model.addAttribute("user_no", i);
 		return "board/list";
 	}
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
@@ -69,7 +65,7 @@ public class BoardController {
 	public String detail(Model model,int board_no,HttpSession session) {
 		HashMap<String, Object> param = boardService.detail(board_no);	
 		int board_view = Integer.parseInt(param.get("BOARD_VIEW").toString());
-		boardService.cntUp(board_no,board_view);
+		boardService.cntUp(board_no,board_view+1);
 		model.addAttribute("vo", param);
 		return "board/detail";
 	}

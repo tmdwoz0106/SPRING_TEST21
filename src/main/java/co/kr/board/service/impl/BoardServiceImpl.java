@@ -68,7 +68,7 @@ public class BoardServiceImpl implements BoardService{
 	public int cntUp(int board_no, int board_view) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("board_no", board_no);
-		param.put("board_view", board_view+1);
+		param.put("board_view", board_view);
 		return boardMapper.cntUp(param);
 	}
 

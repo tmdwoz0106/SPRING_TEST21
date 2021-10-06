@@ -31,6 +31,7 @@ ${user_kinck}
 </table>
 <div id="paging"></div>
 <button type="button" onclick="logout()">로그아웃</button> |
-<a href="/insertBoard.do"><button>게시글 추가</button></a>
+<a href="/insertBoard.do"><button>게시글 추가</button></a> |
+<a href="/UserDetail.do?user_no=${user_no }"><button>내 정보</button></a>
 </body>
 </html>

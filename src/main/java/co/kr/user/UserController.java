@@ -61,4 +61,33 @@ public class UserController {
 		}	
 		return json;
 	}
+	//------------------------------------회원 정보 확인----------------------------------
+	//2021년 10월 06일 오후 4시 03분
+	//유저 정보보기 , 수정 , 탈퇴 완성
+	@RequestMapping(value = "/UserDetail.do", method = RequestMethod.GET)
+	public String detail(int user_no,Model model) {
+		HashMap<String, Object> param = userService.detail(user_no);
+		model.addAttribute("vo", param);
+		return "user/detail";
+	}
+	//------------------------------------회원 탈퇴----------------------------------
+	@RequestMapping(value = "/UserDelete.do", method = RequestMethod.POST)
+	public ModelAndView delete(int user_no) {
+		ModelAndView json = new ModelAndView("jsonView");
+		userService.delete(user_no);
+		return json;
+	}
+	//------------------------------------회원 정보 수정----------------------------------
+	@RequestMapping(value = "/UserModify.do", method = RequestMethod.GET)
+	public String modify(int user_no,Model model) {
+		HashMap<String, Object> vo = userService.detail(user_no);
+		model.addAttribute("vo", vo);
+		return "user/modify";
+	}
+	@RequestMapping(value = "/ModifyUser.do", method = RequestMethod.POST)
+	public ModelAndView modify_ajax(@RequestParam HashMap<String, Object> param,HttpSession session) {
+		ModelAndView json = new ModelAndView("jsonView");
+		userService.modify(param,session);
+		return json;
+	}
 }

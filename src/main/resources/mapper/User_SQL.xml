@@ -39,4 +39,29 @@
 				#{user_name},
 				#{user_kinck})
 	</insert>
+	<select id="detail" resultType="HashMap">
+	SELECT user_no,
+		   user_id,
+		   user_pw,
+		   user_email,
+		   user_name,
+		   user_kinck
+	FROM   user21
+	WHERE  user_no = #{user_no}
+	</select>
+	
+	<delete id="delete">
+		delete 
+		from   user21
+		where  user_no = #{user_no}
+	</delete>
+	
+	<update id="modify">
+		update user21
+		set    user_pw = #{user_pw},
+			   user_email = #{user_email},
+			   user_name = #{user_name},
+			   user_kinck = #{user_kinck}
+		where  user_no = #{user_no}
+	</update>
 </mapper>

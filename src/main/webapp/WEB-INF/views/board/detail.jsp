@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>상세보기</h1>
-
+${kinck}
 <c:if test="${kinck eq vo.USER_KINCK }">
 <button type="button" onclick="remove()">글 삭제</button> |
 <a href="/BoardModify.do?board_no=${vo.BOARD_NO }"><button>글 수정</button></a> |	

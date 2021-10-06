@@ -57,4 +57,23 @@ public class UserServiceImpl implements UserService{
 		}
 		return  userMapper.insert(param);
 	}
+
+	@Override
+	public HashMap<String, Object> detail(int user_no) {
+		return userMapper.detail(user_no);
+	}
+
+	@Override
+	public int delete(int user_no) {
+		return userMapper.delete(user_no);
+	}
+
+	@Override
+	public int modify(HashMap<String, Object> param,HttpSession session) {
+		int no = Integer.parseInt(param.get("user_no").toString());
+		String kinck = (String)param.get("USER_KINCK");
+		session.setAttribute("no", no);
+		session.setAttribute("user_kinck", kinck);
+		return userMapper.modify(param);
+	}
 }
