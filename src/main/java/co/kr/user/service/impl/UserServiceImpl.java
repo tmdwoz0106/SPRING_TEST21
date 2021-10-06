@@ -24,13 +24,14 @@ public class UserServiceImpl implements UserService{
 		int i = userMapper.idCheck(id);
 		if(i > 0) {			
 			param = userMapper.login(param);
+			System.out.println(param);
 			if(param == null) {
 				param = new HashMap<String, Object>();
 				param.put("msg", "잘못된 비밀번호입니다.");
 				return param;
 			}else {
-				session.setAttribute("id", param.get("user_id"));
-				session.setAttribute("kinck", param.get("user_kicnk") );
+				session.setAttribute("param", param.get("USER_NO"));
+				session.setAttribute("kinck", param.get("USER_KINCK"));
 				return param;
 			}
 		}else {

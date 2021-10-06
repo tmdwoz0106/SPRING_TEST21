@@ -34,4 +34,61 @@
 			where ${type} like '%'||#{keyword}||'%'
 		</if>
 	</select>
+	
+	<select id="detail" resultType="HashMap">		
+		select * from
+		(
+			SELECT board_no,
+				   board_title,
+				   board_content,
+				   board_day,
+				   board_view,
+				   user_kinck
+			FROM   user21,board21
+			WHERE  user21.user_no = board21.user_no
+		)a
+		where a.board_no = #{board_no}
+	</select>
+	
+	<insert id="insert">
+		INSERT    INTO
+		board21   (
+			       board_no,
+				   board_title,
+				   board_content,
+				   board_day,
+				   user_no
+				   )
+		VALUES    (
+			       #{board_no},
+				   #{board_title},
+				   #{board_content},
+				   #{board_day},
+				   #{user_no}
+				   )
+	</insert>
+	
+	<select id="max" resultType="int">
+		SELECT MAX(board_no)
+		FROM   board21
+	</select>
+	
+	<delete id="delete" parameterType="hashmap">
+		delete
+		from   board21
+		where  board_no = #{board_no}
+	</delete>
+	
+	<update id="modify" parameterType="hashmap">
+		update board21
+		set    board_title = #{board_title},
+		       board_content = #{board_content}
+		where  board_no = #{board_no}
+	</update>
+	
+	<update id="cntUp">
+		update board21
+		set    board_view = #{board_view}
+		where  board_no = #{board_no}
+	</update>
 </mapper>

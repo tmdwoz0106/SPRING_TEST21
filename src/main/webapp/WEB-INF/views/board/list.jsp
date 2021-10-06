@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>게시판 페이지</h1>
+${user_kinck}
 <label>검색</label>
 	<select id="type">
 		<option value="board_title">제목</option>
@@ -29,5 +30,7 @@
 	<tbody id="tbody"></tbody>
 </table>
 <div id="paging"></div>
+<button type="button" onclick="logout()">로그아웃</button> |
+<a href="/insertBoard.do"><button>게시글 추가</button></a>
 </body>
 </html>

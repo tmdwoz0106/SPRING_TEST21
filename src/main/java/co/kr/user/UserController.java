@@ -22,8 +22,9 @@ public class UserController {
 	//qwe
 	//------------------------------------로그인---------------------------------------
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login() {
-		
+	public String login(Model model,HttpSession session) {
+		String user_kinck = (String)session.getAttribute("user_kinck");
+		model.addAttribute("user_kinck", user_kinck);
 		return "user/login";
 	}
 	

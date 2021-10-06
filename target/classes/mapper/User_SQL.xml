@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="cntMax" resultType="int">
-		SELECT COUNT(*)
+		SELECT MAX(user_no)
 		FROM   user21
 	</select>
 	

@@ -15,7 +15,7 @@ function list(page){
 			var list = result.list;
 			for(var i = 0; i < list.length; i++){
 				var html = "<tr>"
-				    html += "<td>"+list[i].BOARD_TITLE+"</td>"
+				    html += "<td><a href=/BoardDetail.do?board_no="+list[i].BOARD_NO+">"+list[i].BOARD_TITLE+"</a></td>"
 				    html += "<td>"+list[i].BOARD_DAY+"</td>"
 				    html += "<td>"+list[i].USER_KINCK+"</td>"
 				    html += "<td>"+list[i].BOARD_VIEW+"</td>"
@@ -33,4 +33,17 @@ function list(page){
 			}
 		}
 	})
+}
+function logout(){
+	if (confirm("로그아웃 하시겠습니까??") == true){
+		$.ajax({
+			url:"/logout.do",
+			type:"POST",
+			dataType:"JSON",
+			success:function(result){
+				alert("로그아웃");
+				location.href = "/login.do";
+			}
+		})
+	}
 }
