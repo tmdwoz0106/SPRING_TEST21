@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.board.service.BoardService;
+import co.kr.reply.service.ReplyService;
 
 @Controller
 public class BoardController {
 
 	@Autowired
 	public BoardService boardService;
+	
+	@Autowired
+	public ReplyService replyService;
 	
 	//----------------------------리스트 페이지--------------------------
 
@@ -66,6 +70,18 @@ public class BoardController {
 		HashMap<String, Object> param = boardService.detail(board_no);	
 		int board_view = Integer.parseInt(param.get("BOARD_VIEW").toString());
 		boardService.cntUp(board_no,board_view+1);
+		
+		List<HashMap<String, Object>> list = replyService.list(board_no);
+		int replyMax = replyService.max();
+		
+		int i = Integer.parseInt(session.getAttribute("param").toString());
+		model.addAttribute("user_no", i);
+		
+		String kinck = (String)session.getAttribute("kinck");
+		model.addAttribute("user_kinck", kinck);
+		
+		model.addAttribute("max", replyMax+1);
+		model.addAttribute("list", list);
 		model.addAttribute("vo", param);
 		return "board/detail";
 	}

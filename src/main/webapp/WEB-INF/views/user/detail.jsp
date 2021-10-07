@@ -7,9 +7,14 @@
 <title>Insert title here</title>
 <%@ include file="../layout/head.jsp" %>
 <script type="text/javascript" src="/resources/js/user/delete.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </head>
 <body>
 <h1>회원 정보</h1>
+
+<a href="/UserModify.do?user_no=${vo.USER_NO }"><button>회원수정</button></a>
+<button onclick="remove()" type="button">탈퇴</button>
+<a href="/home.do"><button>홈으로</button></a>
 <form id="deleteForm">
 <input type="hidden" name="user_no" value="${vo.USER_NO }" readonly="readonly" />
 <table border="1">
@@ -29,8 +34,6 @@
 	</tr>
 </table>
 </form>
-<a href="/UserModify.do?user_no=${vo.USER_NO }"><button>회원수정</button></a>
-<button onclick="remove()" type="button">탈퇴</button>
-<a href="/home.do"><button>홈으로</button></a>
+
 </body>
 </html>
